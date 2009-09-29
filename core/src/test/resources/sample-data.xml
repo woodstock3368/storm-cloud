@@ -1,0 +1,96 @@
+<dataset>
+	<table name="tblDomain">
+		<column>id</column>
+		<column>name</column>
+		<column>title</column>
+		<column>updated</column>
+		<column>created</column>
+		<row>
+			<value>fd70338a-4584-483e-9bf4-59c7c7b31e85</value>
+			<value>default</value>
+			<value><![CDATA[Default domain]]></value>
+			<value><![CDATA[2009-09-18 06:28:32.0]]></value>
+			<value><![CDATA[2009-09-18 06:28:32.0]]></value>
+		</row>
+	</table>
+	<table name="tblProfile">
+		<column>id</column>
+		<column>name</column>
+		<column>href</column>
+		<column>domain_id</column>
+		<column>updated</column>
+		<column>created</column>
+		<row>
+			<value>b41edef1-bb24-44d1-9aa3-7c5b126f15e3</value>
+			<value>defaults</value>
+			<value>http://www.restms.org/3:Defaults</value>
+			<value>fd70338a-4584-483e-9bf4-59c7c7b31e85</value>
+			<value><![CDATA[2009-09-18 06:28:32.0]]></value>
+			<value><![CDATA[2009-09-18 06:28:32.0]]></value>
+		</row>
+		<row>
+			<value>6650eeeb-9d39-4c21-9a1a-a81bb1f37b87</value>
+			<value>testprofile</value>
+			<value>http://www.wolfe.id.au/testprofile</value>
+			<value>fd70338a-4584-483e-9bf4-59c7c7b31e85</value>
+			<value><![CDATA[2009-09-18 06:28:32.0]]></value>
+			<value><![CDATA[2009-09-18 06:28:32.0]]></value>
+		</row>
+	</table>
+	<table name="tblFeed">
+		<column>id</column>
+		<column>name</column>
+		<column>title</column>
+		<column>licence</column>
+		<column>type</column>
+		<column>domain_id</column>
+		<column>updated</column>
+		<column>created</column>
+		<row>
+			<value>f6363a05-4354-4053-9fdc-16e776a24d0d</value>
+			<value>Announcements</value>
+			<value>Announcement channel.</value>
+			<value>None</value>
+			<value></value>
+			<value>fd70338a-4584-483e-9bf4-59c7c7b31e85</value>
+			<value><![CDATA[2009-09-18 06:28:32.0]]></value>
+			<value><![CDATA[2009-09-18 06:28:32.0]]></value>
+		</row>
+		<row>
+			<value>adfcb85b-6a5a-42ee-b993-a5914b2352d2</value>
+			<value>commands</value>
+			<value>Command processing queue.</value>
+			<value>GPL</value>
+			<value>fifo</value>
+			<value>fd70338a-4584-483e-9bf4-59c7c7b31e85</value>
+			<value><![CDATA[2009-09-18 06:28:32.0]]></value>
+			<value><![CDATA[2009-09-18 06:28:32.0]]></value>
+		</row>
+		<row>
+			<value>56d25063-e60a-4802-9c28-6c375dd2bb0d</value>
+			<value>direct</value>
+			<value>Direct feed.</value>
+			<value>proprietary</value>
+			<value>direct</value>
+			<value>fd70338a-4584-483e-9bf4-59c7c7b31e85</value>
+			<value><![CDATA[2009-09-18 06:28:32.0]]></value>
+			<value><![CDATA[2009-09-18 06:28:32.0]]></value>
+		</row>
+	</table>
+	<table name="tblPipe">
+		<column>id</column>
+		<column>title</column>
+		<column>type</column>
+		<column>domain_id</column>
+		<column>updated</column>
+		<column>created</column>
+		<row>
+			<value>90f197cb-a225-4cd4-b9ab-964bd79e9337</value>
+			<value>Data Feed</value>
+			<value>direct</value>
+			<value>fd70338a-4584-483e-9bf4-59c7c7b31e85</value>
+			<value><![CDATA[2009-09-18 06:28:32.0]]></value>
+			<value><![CDATA[2009-09-18 06:28:32.0]]></value>
+		</row>		
+	</table>
+</dataset>

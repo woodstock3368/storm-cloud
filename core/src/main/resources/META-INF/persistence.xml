@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+        version="1.0">
+
+    <persistence-unit name="restms" transaction-type="RESOURCE_LOCAL">
+        <class>au.id.wolfe.stormcloud.core.model.Domain</class>
+        <class>au.id.wolfe.stormcloud.core.model.Feed</class>
+        <class>au.id.wolfe.stormcloud.core.model.Pipe</class>
+        <class>au.id.wolfe.stormcloud.core.model.Profile</class>
+    </persistence-unit>
+    
+</persistence>  

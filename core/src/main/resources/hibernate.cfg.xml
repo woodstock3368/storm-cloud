@@ -1,0 +1,13 @@
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        
+        <mapping class="au.id.wolfe.stormcloud.core.model.Domain"/>
+        <mapping class="au.id.wolfe.stormcloud.core.model.Feed"/>
+        <mapping class="au.id.wolfe.stormcloud.core.model.Pipe"/>
+        <mapping class="au.id.wolfe.stormcloud.core.model.Profile"/>
+        
+    </session-factory>
+</hibernate-configuration>
