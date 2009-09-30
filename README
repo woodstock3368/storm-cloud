@@ -1,0 +1,31 @@
+Storm Cloud
+===========
+
+Storm Cloud is a RestMS implementation based on Java, Spring, JPA and Jersey.
+The main focus is in producing a simple scalable implementation which is
+comprised of existing open source components with a small amount of implementation
+code gluing it all together. 
+
+There are two modules in this project. The first is "core" and is meant to 
+contain Services and DAOs. The second is "web" and contains any web-related
+files.
+
+Prerequisites
+=============
+
+ * Java version 6.0
+ * Servlet Container
+ * MySQL 5.x database server
+ 
+ Getting Started
+ ===============
+ 
+ To get started, please complete the following steps:
+
+1. Download and install a MySQL 5.x database from 
+   http://dev.mysql.com/downloads/mysql/5.0.html#downloads.
+
+2. From the command line, cd into the web directory and run "mvn jetty:run-war".
+
+3. View the application at http://localhost:8080.
+ 
