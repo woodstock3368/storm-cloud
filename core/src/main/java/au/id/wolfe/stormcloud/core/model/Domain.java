@@ -22,8 +22,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,7 +33,6 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "tblDomain")
-@NamedQueries( { @NamedQuery(name = "Domain.findAll", query = "SELECT d FROM Domain d") })
 public class Domain implements Serializable {
 
     /**

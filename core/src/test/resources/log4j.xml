@@ -52,24 +52,16 @@
 <!--        <level value="DEBUG"/>-->
 <!--    </logger>-->
 
+    <logger name="org.springframework.transaction">
+        <level value="DEBUG"/>
+    </logger>
+
+    <logger name="org.springframework.orm">
+        <level value="DEBUG"/>
+    </logger>
+
     <logger name="org.springframework">
-        <level value="WARN"/>
-    </logger>
-
-    <logger name="org.appfuse">
         <level value="INFO"/>
-    </logger>
-
-    <logger name="org.appfuse.util">
-        <level value="WARN"/>
-    </logger>
-
-    <logger name="org.appfuse.webapp.filter">
-        <level value="ERROR"/>
-    </logger>
-
-    <logger name="org.appfuse.webapp.listener.UserCounterListener">
-        <level value="WARN"/>
     </logger>
 
     <logger name="au.id.wolfe.stormcloud">

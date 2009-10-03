@@ -30,54 +30,12 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository("iProfileDao")
 @Transactional(readOnly = true)
-public class ProfileDaoJpa implements IProfileDao {
+public class ProfileDaoJpa extends GenericDaoJpa<Profile, String> implements IProfileDao {
 
-    private EntityManager entityManager;
-
-    @PersistenceContext
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    /**
+     * Constructor that sets the entity to Profile.class.
+     */
+    public ProfileDaoJpa() {
+        super(Profile.class);
     }
-
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public List<Profile> getAll() {
-        return entityManager.createNamedQuery("Profile.findAll")
-                .getResultList();
-    }
-
-    @Override
-    public Profile getById(String id) {
-        return entityManager.find(Profile.class, id);
-    }
-
-    @Override
-    public boolean save(Profile profile) {
-        entityManager.persist(profile);
-        entityManager.flush();
-        return true;
-    }
-
-    @Override
-    public boolean update(Profile profile) {
-        entityManager.merge(profile);
-        entityManager.flush();
-        return true;
-    }
-
-    @Override
-    public boolean delete(Profile profile) {
-        profile = entityManager.getReference(Profile.class, profile.getId());
-        if (profile == null) {
-            return false;
-        }
-        entityManager.remove(profile);
-        entityManager.flush();
-        return true;
-    }
-
 }

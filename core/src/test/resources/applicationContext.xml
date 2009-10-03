@@ -17,16 +17,50 @@
 
 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-    xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-    xmlns:aop="http://www.springframework.org/schema/aop"
-    xsi:schemaLocation="
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-	<aop:aspectj-autoproxy/>
+
+    <!--
+        These are the DAO @Repository components we want to load for testing.
+    -->
+    <context:component-scan base-package="au.id.wolfe.stormcloud.core.dao"/>
+
+    <!--
+        This will pick up our interceptors
+    -->
+    <context:component-scan base-package="au.id.wolfe.stormcloud.core.interceptor"/>
+
+    <!-- =================================================================== -->
+    <!-- AOP: Configuration and Aspects                                      -->
+    <!-- =================================================================== -->
+
+    <aop:aspectj-autoproxy/>
+
+    <!--
+        Ensure that the above transactional advice runs for any execution
+        of an operation defined by the Dao interface.
+      -->
+    <aop:config>
+        <aop:advisor id="daoTx" advice-ref="txAdvice" pointcut="execution(* *..dao.*Dao.*(..))"/>
+    </aop:config>
+
+
+    <tx:advice id="txAdvice">
+        <tx:attributes>
+            <!-- all methods starting with 'get' are read-only -->
+            <tx:method name="get*" read-only="true"/>
+            <!-- other methods use the default transaction settings (see below) -->
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+
 
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
@@ -36,37 +70,34 @@
         </property>
     </bean>
 
-    <context:annotation-config />
-    <context:component-scan base-package="au.id.wolfe.stormcloud.core" />
-    <tx:annotation-driven />  
-
     <bean id="dataSource"
-        class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-        p:driverClassName="${jdbc.driverClassName}"
-        p:url="${jdbc.url}"
-        p:username="${jdbc.username}"
-        p:password="${jdbc.password}" />
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.url}"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}"/>
 
     <bean id="entityManagerFactory"
-        class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-        p:dataSource-ref="dataSource"
-        p:jpaVendorAdapter-ref="jpaAdapter">
-            <property name="jpaProperties">
-                <value>
-                	hibernate.show_sql=false
-                    hibernate.dialect=${hibernate.dialect}
-                </value>
-            </property>
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+          p:dataSource-ref="dataSource"
+          p:jpaVendorAdapter-ref="jpaAdapter">
+        <property name="jpaProperties">
+            <value>
+                hibernate.show_sql=false
+                hibernate.dialect=${hibernate.dialect}
+            </value>
+        </property>
         <property name="loadTimeWeaver">
             <bean
-                class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
+                    class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
         </property>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
-        p:entityManagerFactory-ref="entityManagerFactory" />
+          p:entityManagerFactory-ref="entityManagerFactory"/>
 
     <bean id="jpaAdapter"
-        class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
-        p:database="MYSQL" p:showSql="true" />
+          class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+          p:database="MYSQL" p:showSql="true"/>
+
 </beans>

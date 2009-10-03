@@ -20,6 +20,8 @@ import au.id.wolfe.stormcloud.core.dao.IDomainDao;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.Set;
+
 import static junit.framework.Assert.*;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -49,7 +51,7 @@ public class DomainDaoSpringJpaTest {
     public void testGetAll() {
         log.info("Test get all =================================");
 
-        List<Domain> domainsCollection = domainService.getAll();
+        Set<Domain> domainsCollection = domainService.getAll();
 
         assertNotNull(domainsCollection);
     }
@@ -66,7 +68,7 @@ public class DomainDaoSpringJpaTest {
         domain.setUpdated(new Date());
         domain.setCreated(new Date());
 
-        assertTrue(domainService.save(domain));
+        domainService.save(domain);
     }
 
     @Test
@@ -84,7 +86,7 @@ public class DomainDaoSpringJpaTest {
 
         domain.setTitle(newTitle);
 
-        assertTrue(domainService.update(domain));
+        domainService.save(domain);
 
         Domain domainUpdated = domainService.getById(defaultDomain);
 

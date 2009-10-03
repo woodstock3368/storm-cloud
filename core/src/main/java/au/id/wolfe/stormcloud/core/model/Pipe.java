@@ -33,7 +33,6 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "tblPipe")
-@NamedQueries( { @NamedQuery(name = "Pipe.findAll", query = "SELECT p FROM Pipe p") })
 public class Pipe {
 
     // ------------------------------------------------------------ Constructors

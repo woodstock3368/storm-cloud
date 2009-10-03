@@ -35,7 +35,6 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name = "tblProfile")
 @NamedQueries( {
-        @NamedQuery(name = "Profile.findAll", query = "SELECT p FROM Profile p"),
         @NamedQuery(name = "Profile.findByDomainId", query = "SELECT p FROM Profile p WHERE p.domain.id = :domain_id") })
 public class Profile implements Serializable {
 

@@ -33,7 +33,6 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "tblFeed")
-@NamedQueries( { @NamedQuery(name = "Feed.findAll", query = "SELECT f FROM Feed f") })
 public class Feed {
 
     // ------------------------------------------------------------ Constructors

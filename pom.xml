@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>au.id.wolfe</groupId>
 	<artifactId>storm-cloud</artifactId>
@@ -8,12 +9,14 @@
 	<name>storm-cloud</name>
 	<url>http://github.com/wolfeidau/storm-cloud</url>
 	<inceptionYear>2009</inceptionYear>
+	<scm>
+		<url>http://github.com/wolfeidau/storm-cloud</url>
+	</scm>
 	<modules>
 		<module>core</module>
-    <module>web</module>
-  </modules>
+		<module>web</module>
+	</modules>
 	<build>
-
 		<plugins>
 			<plugin>
 				<groupId>com.google.code.maven-license-plugin</groupId>
@@ -54,7 +57,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
@@ -81,7 +83,7 @@
 		<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 		<jdbc.url><![CDATA[jdbc:mysql://localhost/stormcloud?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf-8]]></jdbc.url>
 		<jdbc.username>root</jdbc.username>
-		<jdbc.password/>
+		<jdbc.password />
 
 	</properties>
 

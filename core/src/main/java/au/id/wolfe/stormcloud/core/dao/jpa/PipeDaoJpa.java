@@ -33,54 +33,12 @@ import au.id.wolfe.stormcloud.core.model.Pipe;
  */
 @Repository("iPipeDao")
 @Transactional(readOnly = true)
-public class PipeDaoJpa implements IPipeDao{
-    
-    private EntityManager entityManager;
+public class PipeDaoJpa extends GenericDaoJpa<Pipe, String> implements IPipeDao{
 
-    @PersistenceContext
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    /**
+     * Constructor that sets the entity to Pipe.class.
+     */
+    public PipeDaoJpa() {
+        super(Pipe.class);
     }
-
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public List<Pipe> getAll() {
-        return entityManager.createNamedQuery("Pipe.findAll")
-                .getResultList();
-    }
-
-    @Override
-    public Pipe getById(String id) {
-        return entityManager.find(Pipe.class, id);
-    }
-
-    @Override
-    public boolean save(Pipe pipe) {
-        entityManager.persist(pipe);
-        entityManager.flush();
-        return true;
-    }
-
-    @Override
-    public boolean update(Pipe pipe) {
-        entityManager.merge(pipe);
-        entityManager.flush();
-        return true;
-    }
-
-    @Override
-    public boolean delete(Pipe pipe) {
-        pipe = entityManager.getReference(Pipe.class, pipe.getId());
-        if (pipe == null) {
-            return false;
-        }
-        entityManager.remove(pipe);
-        entityManager.flush();
-        return true;
-    }
-
 }

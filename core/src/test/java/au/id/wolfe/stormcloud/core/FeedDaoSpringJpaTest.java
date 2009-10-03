@@ -18,6 +18,7 @@ package au.id.wolfe.stormcloud.core;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.Set;
 
 import static junit.framework.Assert.*;
 import org.junit.Test;
@@ -57,7 +58,7 @@ public class FeedDaoSpringJpaTest {
 
         log.info("Test get all =================================");
 
-        List<Feed> feedList = feedDao.getAll();
+        Set<Feed> feedList = feedDao.getAll();
         
         assertNotNull(feedList);
     }
@@ -76,7 +77,7 @@ public class FeedDaoSpringJpaTest {
         feed.setUpdated(new Date());
         feed.setCreated(new Date());
         
-        assertTrue(feedDao.save(feed));
+        feedDao.save(feed);
 
     }
     
@@ -99,7 +100,7 @@ public class FeedDaoSpringJpaTest {
         feed.setTitle(newTitle);
         feed.setUpdated(new Date());
         
-        assertTrue(feedDao.update(feed));
+        feedDao.save(feed);
         
         Feed updatedFeed = feedDao.getById(updateFeedId);
 

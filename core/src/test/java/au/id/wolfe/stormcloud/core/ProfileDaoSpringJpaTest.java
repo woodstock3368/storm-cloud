@@ -29,6 +29,7 @@ import au.id.wolfe.stormcloud.core.model.Profile;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.Set;
 
 
 /**
@@ -57,7 +58,7 @@ public class ProfileDaoSpringJpaTest {
 
         log.info("Test get all =================================");
 
-        List<Profile> profileList = profileDao.getAll();
+        Set<Profile> profileList = profileDao.getAll();
 
         assertNotNull(profileList);
 
@@ -76,7 +77,7 @@ public class ProfileDaoSpringJpaTest {
         profile.setUpdated(new Date());
         profile.setCreated(new Date());
 
-        assertTrue(profileDao.save(profile));
+        profileDao.save(profile);
     }
 
     @Test
@@ -93,7 +94,7 @@ public class ProfileDaoSpringJpaTest {
         profile.setName(newName);
         profile.setUpdated(new Date());
 
-        assertTrue(profileDao.update(profile));
+        profileDao.save(profile);
 
         Profile updatedProfile = profileDao.getById(garyProfileId);
 

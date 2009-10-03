@@ -23,19 +23,19 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
-	<context:component-scan base-package="au.id.wolfe.stormcloud.web"/>
-	
+	<context:component-scan base-package="au.id.wolfe.stormcloud.web.mvc"/>
+
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
-	
+
 	<!--
 		- Message source for this context, loaded from localized "messages_xx" files.
 	-->
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
 			p:basename="messages"/>
-	
-	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
+
+
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/WEB-INF/jsps/"
 		p:suffix=".jsp"/>
-	
+
 </beans>

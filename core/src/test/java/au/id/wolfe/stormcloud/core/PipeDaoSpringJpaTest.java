@@ -21,6 +21,7 @@ import static org.junit.Assert.*;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.Set;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -51,7 +52,7 @@ public class PipeDaoSpringJpaTest {
 
         log.info("Test get all =================================");
 
-        List<Pipe> pipeList = pipeDao.getAll();
+        Set<Pipe> pipeList = pipeDao.getAll();
         
         assertNotNull(pipeList);
     }
@@ -71,7 +72,7 @@ public class PipeDaoSpringJpaTest {
         
         log.info(pipe.toString());
         
-        assertTrue(pipeDao.save(pipe));
+        pipeDao.save(pipe);
         
     }
     
@@ -87,7 +88,7 @@ public class PipeDaoSpringJpaTest {
         Pipe pipe = pipeDao.getById(updatePipeId);
         pipe.setTitle(newTitle);
         
-        pipeDao.update(pipe);
+        pipeDao.save(pipe);
         
         Pipe updatedPipe = pipeDao.getById(updatePipeId);
         
